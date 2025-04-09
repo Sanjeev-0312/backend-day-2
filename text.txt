@@ -1,0 +1,19 @@
+CONNECT FRONTEND TO BACKEND 
+
+=============model schema=====
+====Create seperate directories for each MVC component: models, views, and controllers,
+
+
+====MODEL====
+
+1.model represent the data structure and business logic of the application. 
+2. They interact with the database or any external data source.
+3. Models can be defined as seperate Javascript logic functions.
+
+Default can use the current date and time .
+
+=====Install Mongoose=======
+
+Mongoose is a MongoDB object modeling tool desgined to working an asynchronous enviroment. Mongoose supports Node.js and Deno(alpha).
+
+Mongoose are help to connect the database continously from the mongoDB.
