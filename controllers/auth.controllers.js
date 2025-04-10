@@ -1,4 +1,5 @@
-export const Register = (req,res) =>{
+import User from "../models/user.schema.js";
+export const Register = async(req,res) =>{
     try{
         const { name, email, password, confirmPassword}=req.body;
         console.log(name, email, password, confirmPassword);
@@ -9,7 +10,18 @@ export const Register = (req,res) =>{
         return res.send("password not matched");
        }
     
-       return res.send("Registration completed");
+
+       const newUser = User({
+        name: name,
+        email: email,
+        password: password,
+      });
+      console.log(newUser, "newUser");
+      const responseFromDatabase = await newUser.save();
+
+      console.log(responseFromDatabase, "responseFromDatabase");
+    return res.json({ success: true, message: "Registrerationc omplted." });
+
         }  
         catch (error) {
             console.log("error in register api call.")
@@ -24,6 +36,5 @@ return res.send("registration completed");
             console.log(error,"error in register api call.");
             return res.send(error);
         }
-      };
-
+      };   
      

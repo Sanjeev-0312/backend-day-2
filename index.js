@@ -1,9 +1,10 @@
-
-// require('dotenv').config()
 import express from "express";
 import AllRoutes from "./routes/index.js";
 import morgan from "morgan";
 import mongoose from "mongoose";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express()
 const port = 3000
@@ -12,7 +13,9 @@ app.use(morgan('combined'))
 
 app.use('/api/v1', AllRoutes)
 
-mongoose.connect()
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 app.get('/',(req, res)=>{
     res.send('Welcome to the backend  World!')
