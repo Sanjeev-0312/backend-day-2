@@ -1,9 +1,10 @@
 import express from "express";
+import cors from "cors";
 import AllRoutes from "./routes/index.js";
 import morgan from "morgan";
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
-import cors from "cors";
+
 
 dotenv.config();
 
@@ -12,21 +13,9 @@ const port = 8000
 
 app.use(morgan('combined'))
 
+app.use(cors());  
+
 app.use('/api/v1', AllRoutes)
-
-
-
-// ✅ Enable CORS for your frontend origin BEFORE routes
-app.use(cors({
-    origin: 'http://localhost:3001',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
-  }));  
-  // ✅ Dummy test route (replace with your actual one)
-  app.post('/api/v1/auth/register', (req, res) => {
-    res.status(200).json({ message: 'Registered successfully!' });
-  });
-
 
 
   app.use(express.json());
