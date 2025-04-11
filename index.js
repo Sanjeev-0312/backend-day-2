@@ -1,4 +1,5 @@
 import express from "express";
+
 import cors from "cors";
 import AllRoutes from "./routes/index.js";
 import morgan from "morgan";
@@ -13,8 +14,8 @@ const port = 8000
 
 app.use(morgan('combined'))
 
-app.use(cors());  
 
+app.use(cors());  
 app.use('/api/v1', AllRoutes)
 
 
