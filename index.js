@@ -2,6 +2,9 @@
 =======
 
 require('dotenv').config()
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 import express from "express";
 
@@ -25,9 +28,15 @@ app.use(express.json());
 app.use('/api/v1', AllRoutes)
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
+=======
+mongoose.connect(process.env.MONGODBURL).then(()=>{
+    console.log("MongoDB connected");
+});
+>>>>>>> Stashed changes
 =======
 mongoose.connect(process.env.MONGODBURL).then(()=>{
     console.log("MongoDB connected");
