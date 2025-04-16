@@ -6,7 +6,7 @@ export const Register = async (req, res) => {
     console.log(req.body,"req.body");
     // console.log("Incoming request body:", req.body);
     // const { name, email, password, confirmPassword } = req.body.userData;
-    const { name, email, password, confirmPassword } = req.body.userData;
+    const { name, email, password, confirmPassword } = req.body;
     console.log(name, email, password, confirmPassword);
     if (!name || !email || !password || !confirmPassword) {
       return res.json({ success: false, message: "All data mandatory," });
