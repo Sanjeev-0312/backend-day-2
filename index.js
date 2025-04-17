@@ -1,5 +1,4 @@
 import express from "express";
-
 import cors from "cors";
 import AllRoutes from "./routes/index.js";
 import morgan from "morgan";
@@ -8,10 +7,11 @@ import dotenv from 'dotenv';
 import User from "./models/user.schema.js";
 
 
-dotenv.config();
+
 const app = express()
 const port = 8000
 app.use(morgan('combined'))
+dotenv.config();
 app.use(cors());  
 app.use(express.json());
 
