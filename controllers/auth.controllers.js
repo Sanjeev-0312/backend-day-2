@@ -6,7 +6,7 @@ export const Register = async (req, res) => {
     console.log(req.body,"req.body");
     // console.log("Incoming request body:", req.body);
     // const { name, email, password, confirmPassword } = req.body.userData;
-    const { name, email, password, confirmPassword } = req.body;
+    const { name, email, password, confirmPassword } = req.body.userData;
     console.log(name, email, password, confirmPassword);
     if (!name || !email || !password || !confirmPassword) {
       return res.json({ success: false, message: "All data mandatory," });
@@ -61,18 +61,15 @@ export const Register = async (req, res) => {
   }
 };
 
-
-
-
 export const Login = (req, res) => {
   try {
     return res.json({
       success: true,
-      message: "registration completed"
+      message: "Login"
     });
   } catch (error) {
     console.log(error, "error in register api call.");
-    return res.json(error);
+    return res.json({success: false, error: error});
   }
 };
 
