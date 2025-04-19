@@ -6,7 +6,7 @@ export const Register = async (req, res) => {
     console.log(req.body,"req.body");
     // console.log("Incoming request body:", req.body);
     // const { name, email, password, confirmPassword } = req.body.userData;
-    const { name, email, password, confirmPassword } = req.body.userData;
+    const { name, email, password, confirmPassword } = req.body.userData ;
     console.log(name, email, password, confirmPassword);
     if (!name || !email || !password || !confirmPassword) {
       return res.json({ success: false, message: "All data mandatory," });
@@ -15,7 +15,7 @@ export const Register = async (req, res) => {
       return res.json({
         success: false,
         message: "password not matched"
-      });
+      })
     }
 
     //  const isEmailExist = await User.find({email: email});
@@ -61,9 +61,18 @@ export const Register = async (req, res) => {
   }
 };
 
-export const Login = (req, res) => {
+export const Login = async (req, res) => {
   try {
-    return res.json({
+     const {email , password} = req.body.userData;
+     if(!email || !password){
+     return res.json({success: false, message: "All fields are mandatory."});
+     }
+     const isUserExists = await User.findOne({email: email});
+     console.log(isUserExists, "isUserExists");
+     if(!isUserExists){
+      return res.json({success: false, message: "Email is wrong."});
+     }
+      return res.json({
       success: true,
       message: "Login"
     });
