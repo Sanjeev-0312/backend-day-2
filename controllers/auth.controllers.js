@@ -35,7 +35,7 @@ export const Register = async (req, res) => {
         success: false,
         message: "Email already exist please enter another gmail"
       });
-    };
+    }; 
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
