@@ -72,9 +72,17 @@ export const Login = async (req, res) => {
      if(!isUserExists){
       return res.json({success: false, message: "Email is wrong."});
      }
+
+     console.log(password, "req.body.password",isUserExists.password,"isUserExists.password"
+    );
+     const isPasswordCorrect = await bcrypt.compare(password, isUserExists.password);
+     console.log(isPasswordCorrect, "isPasswordCorrent");
+     if(!isPasswordCorrect){
+      return res.json({ success:false, message: "Password is wrong."});
+     }
       return res.json({
       success: true,
-      message: "Login"
+      message: "Login Successful"
     });
   } catch (error) {
     console.log(error, "error in register api call.");
